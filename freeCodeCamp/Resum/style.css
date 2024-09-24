@@ -1,0 +1,36 @@
+
+h1 {
+  color:rgba(162, 0, 255, 0.76);
+  font-family: Georgia, serif;
+  
+}
+h3{
+  color: rgb(27, 40, 233);
+  margin-left: 30px;
+  font-size: large;
+  font-family: Georgia, serif;
+}
+
+main {
+  min-height: 100vh;
+  background: linear-gradient(to right top, #d92de9, #6cdbed)
+  
+}
+  
+.box1{
+  background-color: orange;
+  width: 300px;
+  height: 50%;
+  box-shadow: 8px 8px 5px #444;
+  position: absolute;
+  margin-left: 30px;
+  
+}
+.box2{
+  background-color: PaleTurquoise;
+  width: 300px;
+  height: 10em;
+  box-shadow: 8px 8px 5px #444;
+  position: absolute;
+  top: 400px; left:30px;
+}

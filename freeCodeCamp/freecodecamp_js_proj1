@@ -1,0 +1,123 @@
+function checkCashRegister(price, cash, cid) {
+  const currencyUnits = {
+    PENNY: 0.01,
+    NICKEL: 0.05, 
+    DIME: 0.1,
+    QUARTER: 0.25,
+    ONE: 1,
+    FIVE: 5,
+    TEN: 10, 
+    TWENTY: 20,
+    "ONE HUNDRED": 100
+  };
+
+  let change = cash - price;
+  let changeDue = [];
+
+  // Calculate change due and cash-in-drawer total
+  let cidTotal = cid.reduce((total, next) => total + next[1], 0);
+  if(change > cidTotal) {
+    return {status: "INSUFFICIENT_FUNDS", change: []};
+  }
+
+  if(change === cidTotal) {
+    return {status: "CLOSED", change: cid};
+  }
+
+  // Iterate through cid from high to low denominations  
+  for(let i = cid.length - 1; i >= 0; i--) {
+    let unit = cid[i];
+    let unitName = unit[0];
+    let unitAmount = unit[1];
+
+    while(unitAmount > 0 && change >= currencyUnits[unitName]) {
+      // Calculate the number of units of current denomination to deduct
+      let unitsToDeduct = Math.floor(change / currencyUnits[unitName]);
+
+      // Deduct those units from cid and change  
+      unitAmount -= unitsToDeduct;
+      change -= unitsToDeduct * currencyUnits[unitName];
+
+      // Add units deducted to changeDue array
+      if(unitsToDeduct > 0) {
+        changeDue.push([unitName, unitsToDeduct * currencyUnits[unitName]]);  
+      }
+    }
+  }
+
+  // If exact change not met, empty change array
+  if(change > 0) {
+    return {status: "INSUFFICIENT_FUNDS", change: []};
+  }
+
+  return {status: "OPEN", change: changeDue};
+}
+
+
+
+function checkCashRegister(price, cash, cid) {
+  const currencyUnits = {
+    PENNY: 0.01,
+    NICKEL: 0.05,
+    DIME: 0.1,
+    QUARTER: 0.25,
+    ONE: 1,
+    FIVE: 5,
+    TEN: 10,
+    TWENTY: 20,
+    "ONE HUNDRED": 100
+  };
+
+  let change = cash - price;
+  let changeDue = [];
+
+  let cidTotal = cid.reduce((total, next) => total + next[1], 0);
+  if (change > cidTotal) {
+    return { status: "INSUFFICIENT_FUNDS", change: [] };
+  }
+
+  if (change === cidTotal) {
+    return { status: "CLOSED", change: cid };
+  }
+
+  for (let i = cid.length - 1; i >= 0; i--) {
+    let unit = cid[i];
+    let unitName = unit[0];
+    let unitAmount = unit[1];
+
+    while (unitAmount > 0 && change >= currencyUnits[unitName]) {
+      let unitsToDeduct = Math.floor(change / currencyUnits[unitName]);
+
+      unitAmount -= unitsToDeduct;
+      change -= unitsToDeduct * currencyUnits[unitName];
+
+      if (unitsToDeduct > 0) {
+        changeDue.push([unitName, unitsToDeduct]); // Fixed the calculation here
+      }
+    }
+  }
+
+  if (change > 0) {
+    return { status: "INSUFFICIENT_FUNDS", change: [] };
+  }
+
+  return { status: "OPEN", change: changeDue };
+}
+
+console.log(
+  checkCashRegister(
+    3.26,
+    100,
+    [
+      ["PENNY", 1.01],
+      ["NICKEL", 2.05],
+      ["DIME", 3.1],
+      ["QUARTER", 4.25],
+      ["ONE", 90],
+      ["FIVE", 55],
+      ["TEN", 20],
+      ["TWENTY", 60],
+      ["ONE HUNDRED", 100]
+    ]
+  )
+);

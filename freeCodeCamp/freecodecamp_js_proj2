@@ -1,0 +1,26 @@
+function telephoneCheck(str) {
+  let removeChars = str.replace(/[^0-9]/g, '');
+  //console.log(removeChars);
+  //console.log(removeChars.length);
+
+  if(removeChars.length === 11 && removeChars[0] === '1'){
+    return true;
+  }
+  else if(removeChars.length === 10){
+    return true;
+  }
+  else if(removeChars.length === 12 && removeChars[0] === '1'){
+    return true;
+}
+  else{
+    return false;
+  }
+}
+
+function telephoneCheck(str) {
+  let removeChars = str.replace(/[^0-9]/g, '');
+  const phoneFormat = /^(1\s?)?(\(\d{3}\)|\d{3})[-\s]?\d{3}[-\s]?\d{4}$/;
+  let phoneNumber = phoneFormat.test(str);
+  
+  return phoneNumber;
+}

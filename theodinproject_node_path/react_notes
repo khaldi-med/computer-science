@@ -1,0 +1,14 @@
+***
+State definition with useState commonly follows this pattern:
+
+const [stateValue, setStateValue] = useState(initialValue);
+
+// adapted for our use case:
+const [backgroundColor, setBackgroundColor] = useState(initialColor);
+
+***
+Hooks can only be called from the top level of a functional component.
+Hooks can’t be called from inside loops or conditions.
+
+***
+

@@ -1,0 +1,62 @@
+###############
+The command shell is often called a REPL (Read-Eval-Print-Loop), which is reflected in the way it interacts with the user:
+
+Try right now to see the manual of the ls program by typing man ls in the terminal. Press q to exit view mode, f (forward) to go forwards, b (backward) to go backwards.
+
+Sometimes you only need to see the beginning or end of a file. The commands head and tail will help in that situation. They also take the path to the file as input, only head shows the first 10 lines and tail shows the last 10 lines. This behavior can be changed by specifying the desired number of lines using the -n option.
+
+less provides several dozens of commands to move and search through the text, most of them can be found in the corresponding manual. Here we'll touch on the main ones:
+
+q — quit
+f — page forward
+b — page backward
+if you type /, then start typing letters and press Enter, it will search for the text you typed. Move through the matches found by the n command (move to the next match) and N command (move to the previous match).
+
+Grep—
+CLI fundamentals
+The word "grepping" is among the most popular terms used by developers. It comes from the console utility grep (global regular expression print), which searches a file or files for specific text. "Grepping" for developers is the same as "Googling" for internet users. As a rule, the files with the source code or logs during debugging are the ones that are grepped.
+
+
+On *nix systems, there is a built-in wc (word count) utility that can count the number of words, lines, or characters in a file. 
+
+
+Despite the variety of languages and printing methods, from the point of view of the operating system that runs the program, they all work exactly the same. When any program starts, the operating system associates three so-called threads with it: STDIN (Standard Input), STDOUT (Standard Output) STDERR (Standard Error). A programming language considers streams as files and interacts with them as files. STDOUT is responsible for the output on the screen. Every time a program (in any language) prints to the screen, the print function actually writes data to STDOUT using the write function, and it's up to the operating system to decide where to output the result. The default output is on the terminal screen.
+
+Here it must be said that a good understanding of this topic requires knowledge of operating systems, in particular, knowledge of the subsystems responsible for processes and the file system. In a nutshell, no programming language can knows that a screen exists, much less interact with it. The responsibility for interacting with the hardware rests entirely on the shoulders of the operating system, and the programs can only ask the operating system to perform a particular task. Once you understand this division, implementing programming languages is greatly simplified. It's enough to know about the existence of STDOUT and be able to write to it, the operating system will do everything else. This means that a program written on one computer can run without problems on another computer with a different configuration and monitor (or even without a monitor altogether).
+
+Now comes the interesting part. The OS allows these threads to be swapped out at system startup, which opens up some interesting possibilities. For example, the output of any command running in bash can be written to a file instead of being displayed on the screen.
+########
+
+To copy the directory, you must add the -r (recursive) flag.
+########
+
+use the -p flag, which creates directories recursively.
+
+"mkdir -p one/two/three"
+########
+
+Examine the environment variables in your local environment by typing env
+########
+
+sudo (substitute user and do).
+########
+
+tee shell commend for write to a none acceses file permission
+
+
+
+A	B	C	D
+#	Permission	rwx	Binary
+7	read, write and execute	rwx	111
+6	read and write	rw-	110
+5	read and execute	r-x	101
+4	read only	r--	100
+3	write and execute	-wx	011
+2	write only	-w-	010
+1	execute only	--x	001
+drwxr-xr-x in numerical form corresponds to 755, and -rw-r--r-- — 644.
+
+However, the root user is outside this system. They doesn't care about permissions - a superuser can do anything.
+
+
+

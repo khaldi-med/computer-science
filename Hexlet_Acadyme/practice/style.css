@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+
+  background: navy;
+  color: yellow;
+}
+
+.container {
+  display: flex;
+  gap: 2rem;
+  background: navy;
+  color: yellow;
+}
+.cv0 {
+  background-color: antiquewhite;
+}
+.cv1 {
+  background-color: blue;
+}
+.cv2 {
+  background-color: rgb(91, 91, 236);
+}
